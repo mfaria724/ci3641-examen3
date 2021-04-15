@@ -1,6 +1,11 @@
 # clase abstracta Secuencia
 class Secuencia
 
+  # inicializa la secuencia como vacía
+  def initialize
+    @list = []
+  end
+
   # recibe un elemento y lo agrega a la secuencia
   def agregar(elem)
     raise 'function not implementedf'
@@ -20,14 +25,14 @@ end
 # definición de la clase secuencia
 class Cola < Secuencia
 
-  # inicializa la cola como vacía
+  # constructor vacío
   def initialize
-    @cola = []
+    super()
   end
 
   # agrega el elemento en la última posición
   def agregar(elem)
-    @cola.append(elem)
+    @list.append(elem)
   end
 
   # revisa si la pila no está vacía, si no lo está
@@ -36,29 +41,29 @@ class Cola < Secuencia
     if self.vacio()
       raise 'La cola se encuentra vacía'
     else
-      @cola.shift()
+      @list.shift()
     end 
   end
 
   # revisa si la longitud de la lista es cero, lo que 
   # indica que está vacía.
   def vacio
-    @cola.length() == 0
+    @list.length() == 0
   end
 end
 
 # definición de la clase Pila
 class Pila < Secuencia
 
-  # incializa la pila como vacía
+  # constructor vacío
   def initialize
-    @pila = []
+    super()
   end
-
+  
   # agrega un elemento de último (la izquierda simboliza el tope de
   # la pila)
   def agregar(elem)
-    @pila.append(elem)
+    @list.append(elem)
   end
 
   # revisa si la pila está vacía, si no lo está, obtén el último elemento
@@ -68,8 +73,8 @@ class Pila < Secuencia
     if self.vacio()
       raise 'La pila se encuentra vacia'
     else
-      elem = @pila.last
-      @pila = @pila.first @pila.size - 1
+      elem = @list.last
+      @list = @list.first @list.size - 1
       return elem
     end
   end
@@ -77,6 +82,6 @@ class Pila < Secuencia
   # revisa si la longitud de la lista es cero, lo que 
   # indica que está vacía.
   def vacio
-    @pila.length() == 0
+    @list.length() == 0
   end
 end
